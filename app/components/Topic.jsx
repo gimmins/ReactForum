@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import uuid from 'uuid';
+import {browserHistory} from 'react-router';
+
 var {Link} = require('react-router');
 
 import * as ForumAPI from 'ForumAPI';
@@ -89,9 +91,10 @@ class Topic extends Component {
     }
 
     return (
-      <div className="container modal-content">
+      <div className="container modal-content threads">
         <form onSubmit={this.submitThread.bind(this)}>
           <input type="text"
+                 placeholder="Please insert your thread here"
                  value={this.state.threadContent}
                  onChange={this.onThreadContentChange.bind(this)}/>
           <button className="button expanded">
@@ -104,6 +107,21 @@ class Topic extends Component {
         </button>
       </div>
     );
+  }
+
+  handleBack() {
+    var paths = this.props.location.pathname.trim().split('/');
+    window.location = '#/' + paths[1];
+  }
+
+  renderBackButton() {
+    return (
+      <div>
+        <button className="button expanded" onClick={this.handleBack.bind(this)}>
+          Back
+        </button>
+      </div>
+    )
   }
 
   renderThreads() {
@@ -128,6 +146,7 @@ class Topic extends Component {
   render() {
     return (
       <div>
+        {this.renderBackButton()}
         {this.renderAddThreadButton()}
         {this.renderThreadInput()}
         {this.renderThreads()}

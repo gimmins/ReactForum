@@ -88,9 +88,10 @@ class Thread extends Component {
     }
 
     return (
-      <div className="container modal-content">
+      <div className="container modal-content posts">
         <form onSubmit={this.submitPost.bind(this)}>
           <input type="text"
+                 placeholder="Please insert your post here"
                  value={this.state.postContent}
                  onChange={this.onPostContentChange.bind(this)}/>
           <button className="button expanded">
@@ -103,6 +104,21 @@ class Thread extends Component {
         </button>
       </div>
     );
+  }
+
+  handleBack() {
+    var paths = this.props.location.pathname.trim().split('/');
+    window.location = '#/' + paths[1] + '/' + paths[2] + '/' + paths[3];
+  }
+
+  renderBackButton() {
+    return (
+      <div>
+        <button className="button expanded" onClick={this.handleBack.bind(this)}>
+          Back
+        </button>
+      </div>
+    )
   }
 
   renderPosts() {
@@ -126,6 +142,7 @@ class Thread extends Component {
   render() {
     return (
       <div>
+        {this.renderBackButton()}
         {this.renderAddPostButton()}
         {this.renderPostInput()}
         {this.renderPosts()}

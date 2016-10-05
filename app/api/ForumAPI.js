@@ -41,6 +41,7 @@ function setThread(path, thread, user) {
   })
   .then(response => {
     if (response.status === 200) {
+      console.log(response.data);
       response.data[0].uuid = uuid();
       return response.data[0];
     }
@@ -84,8 +85,13 @@ function postReply(path, postId, reply, user) {
   return axios.post(`http://www.gimmins.com/forum_api.php${path}/${postId}`, {
     reply: reply,
     user: user,
-    date: date,
-  });
+  })
+  .then(response => {
+    if (response.status === 200) {
+      response.data[0].uuid = uuid();
+      return response.data[0];
+    }
+  })
 }
 
 function getTotal() {

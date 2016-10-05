@@ -1,69 +1,12 @@
-.container {
-  background: grey;
-  border: 1px solid grey;
-  border-radius: 5px;
-  padding: 30px;
-  margin-bottom: 2rem;
-}
+@import "base/variables";
 
-.container__header {
-  border-bottom: 1px solid grey;
-  padding: 1rem;
+// foundation
+@import "base/foundation-settings";
+@import "foundation";
+@include foundation-everything;
 
-  label {
-    cursor: pointer;
-    font-size: 1rem;
-  }
-
-  > :last-child {
-    align-items: center;
-    display: flex;
-  }
-}
-
-.topics {
-  padding: 15px 15px 0px 15px;
-  margin-bottom: 2rem;
-}
-
-.container__message {
-  color: white;
-  margin: 2rem auto;
-  text-align: center;
-}
-
-.container__footer {
-  border-top: 1px solid grey;
-  padding: 1rem 1rem 0 1rem;
-}
-
-p {
-  color: #777;
-}
-
-.top-bar {
-  margin-bottom: 20px;
-}
-
-.analytics {
-  margin-left: 20px;
-}
-
-.posts {
-  margin-bottom: 10px;
-}
-
-.reply {
-  margin-bottom: 10px;
-  background-color: antiquewhite;
-  border: 2px solid #d0d0d0;
-  margin-right: 15px;
-}
-
-.reply-input {
-  margin-bottom: 10px;
-  background-color: antiquewhite;
-  border: 2px solid #d0d0d0;
-  margin-right: 15px;
-  padding: 10px 10px 0px 10px;
-}
+// Components
+@import "components/container";
+@import "components/page-actions";
+@import "components/page-title";
+@import "components/forum";

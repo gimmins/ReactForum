@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
+import moment from 'moment';
 
 import * as ForumAPI from 'ForumAPI';
 
@@ -47,6 +48,7 @@ class Post extends Component {
           response
         ],
       });
+      that.refs.postContent.value = '';
     });
   }
 
@@ -55,7 +57,8 @@ class Post extends Component {
       return (
         <div className="row">
           <div className="large-4 columns"></div>
-          <div key={reply.uuid} className="large-8 columns container reply">
+          <div key={reply.uuid}
+               className="large-8 columns button warning hollow reply">
             {reply.reply_content}
             {reply.reply_by}
           </div>
@@ -71,7 +74,9 @@ class Post extends Component {
           <div className="large-4 columns"></div>
           <div className="large-8 columns container reply-input">
             <textarea type="textarea" ref="postContent"></textarea>
-            <input type="submit" className="button expanded reply-button" value="Reply"/>
+            <input type="submit"
+                   className="button expanded reply-button"
+                   value="Reply"/>
           </div>
         </div>
       </form>
@@ -80,16 +85,21 @@ class Post extends Component {
 
   renderPosts() {
     const {username, date, content} = this.props;
+    var readableDate = moment(date, "YYYY-MM-DD HH:mm:ss").format("dddd MMMM Do YYYY");
     return (
-      <div className="container posts">
+      <div className="button hollow posts">
         <div>
           {username}
         </div>
-        <div>
-          {date}
+        <div className="date">
+          <p>
+            {readableDate}
+          </p>
         </div>
-        <div>
-          {content}
+        <div className="content">
+          <p>
+            {content}
+          </p>
         </div>
       </div>
     )
@@ -100,8 +110,8 @@ class Post extends Component {
       <div>
         {this.renderPosts()}
         <div className="reply-container">
-          {this.renderReplyButton()}
           {this.renderReplies()}
+          {this.renderReplyButton()}
         </div>
       </div>
     )
