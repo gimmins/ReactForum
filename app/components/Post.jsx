@@ -54,13 +54,21 @@ class Post extends Component {
 
   renderReplies() {
     return this.state.replies.map((reply, index) => {
+      var readableDate = moment(reply.reply_date, "YYYY-MM-DD HH:mm:ss").format("dddd MMMM Do YYYY");
       return (
-        <div className="row">
+        <div key={reply.uuid} className="row replies">
           <div className="large-4 columns"></div>
           <div key={reply.uuid}
-               className="large-8 columns button warning hollow reply">
-            {reply.reply_content}
-            {reply.reply_by}
+               className="large-8 columns button warning hollow reply-button">
+            <p>
+              {reply.reply_by}
+            </p>
+            <p className="date">
+              {readableDate}
+            </p>
+            <p className="content">
+              {reply.reply_content}
+            </p>
           </div>
         </div>
       )

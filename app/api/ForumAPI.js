@@ -7,6 +7,7 @@ function getTopics() {
   return axios.get('http://www.gimmins.com/forum_api.php/topics')
   .then(function(response) {
     if (response.status === 200) {
+      console.log(response);
       return response.data;
     }
   });
