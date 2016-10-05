@@ -4,7 +4,7 @@ import moment from 'moment';
 import uuid from 'uuid';
 
 function getTopics() {
-  return axios.get('http://localhost:8888/forum_api.php/topics')
+  return axios.get('http://www.gimmins.com/forum_api.php/topics')
   .then(function(response) {
     if (response.status === 200) {
       return response.data;
@@ -13,7 +13,7 @@ function getTopics() {
 }
 
 function setTopic(topic, user) {
-  return axios.post('http://localhost:8888/forum_api.php/topics', {
+  return axios.post('http://www.gimmins.com/forum_api.php/topics', {
     topic: topic,
     user: user,
   })
@@ -26,7 +26,7 @@ function setTopic(topic, user) {
 }
 
 function getThreads(path) {
-  return axios.get(`http://localhost:8888/forum_api.php${path}`)
+  return axios.get(`http://www.gimmins.com/forum_api.php${path}`)
   .then(response => {
     if (response.status === 200) {
       return response.data;
@@ -35,7 +35,7 @@ function getThreads(path) {
 }
 
 function setThread(path, thread, user) {
-  return axios.post(`http://localhost:8888/forum_api.php${path}`, {
+  return axios.post(`http://www.gimmins.com/forum_api.php${path}`, {
     thread: thread,
     user: user,
   })
@@ -48,7 +48,7 @@ function setThread(path, thread, user) {
 }
 
 function getPosts(path) {
-  return axios.get(`http://localhost:8888/forum_api.php/${path}`)
+  return axios.get(`http://www.gimmins.com/forum_api.php/${path}`)
   .then(response => {
     if (response.status === 200) {
       return response.data;
@@ -57,7 +57,7 @@ function getPosts(path) {
 }
 
 function setPost(path, post, user) {
-  return axios.post(`http://localhost:8888/forum_api.php${path}`, {
+  return axios.post(`http://www.gimmins.com/forum_api.php${path}`, {
     post: post,
     user: user,
   })
@@ -71,7 +71,7 @@ function setPost(path, post, user) {
 }
 
 function getReplies(path, postId) {
-  return axios.get(`http://localhost:8888/forum_api.php${path}/${postId}`)
+  return axios.get(`http://www.gimmins.com/forum_api.php${path}/${postId}`)
   .then(response => {
     if (response.status === 200) {
         return response.data;
@@ -82,7 +82,7 @@ function getReplies(path, postId) {
 function postReply(path, postId, reply, user) {
   var date = moment().format('YYYY-MM-DD');
 
-  return axios.post(`http://localhost:8888/forum_api.php${path}/${postId}`, {
+  return axios.post(`http://www.gimmins.com/forum_api.php${path}/${postId}`, {
     reply: reply,
     user: user,
     date: date,
@@ -90,7 +90,7 @@ function postReply(path, postId, reply, user) {
 }
 
 function getTotal() {
-  return axios.get('http://localhost:8888/forum_api.php/analytics/total')
+  return axios.get('http://www.gimmins.com/forum_api.php/analytics/total')
   .then(response => {
     if (response.status === 200) {
       return response.data;
