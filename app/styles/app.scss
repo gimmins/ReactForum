@@ -21,6 +21,11 @@
   }
 }
 
+.topics {
+  padding: 15px 15px 0px 15px;
+  margin-bottom: 2rem;
+}
+
 .container__message {
   color: white;
   margin: 2rem auto;
@@ -44,8 +49,21 @@ p {
   margin-left: 20px;
 }
 
+.posts {
+  margin-bottom: 10px;
+}
+
 .reply {
   margin-bottom: 10px;
   background-color: antiquewhite;
   border: 2px solid #d0d0d0;
+  margin-right: 15px;
+}
+
+.reply-input {
+  margin-bottom: 10px;
+  background-color: antiquewhite;
+  border: 2px solid #d0d0d0;
+  margin-right: 15px;
+  padding: 10px 10px 0px 10px;
 }

@@ -63,7 +63,6 @@ function setPost(path, post, user) {
   })
   .then(response => {
     if (response.status === 200) {
-      console.log(response.data);
       response.data[0].uuid = uuid();
       return response.data[0];
     }

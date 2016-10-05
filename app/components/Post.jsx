@@ -53,40 +53,56 @@ class Post extends Component {
   renderReplies() {
     return this.state.replies.map((reply, index) => {
       return (
-        <div key={reply.uuid} className="container reply">
-          {reply.reply_content}
-          {reply.reply_by}
+        <div className="row">
+          <div className="large-4 columns"></div>
+          <div key={reply.uuid} className="large-8 columns container reply">
+            {reply.reply_content}
+            {reply.reply_by}
+          </div>
         </div>
       )
     })
   }
 
+  renderReplyButton() {
+    return (
+      <form onSubmit={this.onPost.bind(this)}>
+        <div className="row">
+          <div className="large-4 columns"></div>
+          <div className="large-8 columns container reply-input">
+            <textarea type="textarea" ref="postContent"></textarea>
+            <input type="submit" className="button expanded reply-button" value="Reply"/>
+          </div>
+        </div>
+      </form>
+    );
+  }
+
+  renderPosts() {
+    const {username, date, content} = this.props;
+    return (
+      <div className="container posts">
+        <div>
+          {username}
+        </div>
+        <div>
+          {date}
+        </div>
+        <div>
+          {content}
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div>
-        Post
-        <div>
-          {this.props.username}
-        </div>
-        <div>
-          {this.props.date}
-        </div>
-        <div>
-          {this.props.content}
-        </div>
+        {this.renderPosts()}
         <div className="reply-container">
+          {this.renderReplyButton()}
           {this.renderReplies()}
         </div>
-        <form onSubmit={this.onPost.bind(this)}>
-          <ul>
-            <li>
-              <input type="textarea" ref="postContent"/>
-            </li>
-            <li>
-              <input type="submit" className="button" value="Reply"/>
-            </li>
-          </ul>
-        </form>
       </div>
     )
   }

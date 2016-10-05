@@ -84,7 +84,7 @@ class Topics extends Component {
     }
 
     return (
-      <div className="container modal-content">
+      <div className="container modal-content topics">
         <form onSubmit={this.submitTopic.bind(this)}>
           <input type="text" ref="topicText"
                  value={this.state.topicContent}
